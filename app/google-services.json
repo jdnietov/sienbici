@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "435486015042",
+    "firebase_url": "https://si-en-bici-3470e.firebaseio.com",
+    "project_id": "si-en-bici-3470e",
+    "storage_bucket": "si-en-bici-3470e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435486015042:android:03f8b967a0688f4c2df7db",
+        "android_client_info": {
+          "package_name": "co.edu.unal.sienbici"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435486015042-ut4nqgaeg330m47qhukvir80p24unikm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.unal.sienbici",
+            "certificate_hash": "228be39360b423e97a7bd652bcf72d418a7782b0"
+          }
+        },
+        {
+          "client_id": "435486015042-o8sj3bmmr33c9u3ogr4iph060emqa8cd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvaU7H_MRpmfYxxGuIl92GF5gfdHE9Wso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435486015042-o8sj3bmmr33c9u3ogr4iph060emqa8cd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
