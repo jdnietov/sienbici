@@ -75,9 +75,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         supportActionBar?.setHomeButtonEnabled(true)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
+        /*val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        mapFragment.getMapAsync(this)*/
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
