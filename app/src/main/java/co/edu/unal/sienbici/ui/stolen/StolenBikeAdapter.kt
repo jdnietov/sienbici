@@ -8,29 +8,42 @@ import androidx.recyclerview.widget.RecyclerView
 import co.edu.unal.sienbici.R
 import kotlinx.android.synthetic.main.card_stolen.view.*
 
-class StolenBikeAdapter (val bikes: ArrayList<StolenBikeModel>, val context: Context) : RecyclerView.Adapter<ViewHolder> (){
+class StolenBikeAdapter (val bikes: ArrayList<StolenBikeModel>, val bikeClickListener: OnBikeClickListener) : RecyclerView.Adapter<ViewHolder> (){
     override fun getItemCount(): Int {
         return bikes.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.card_stolen, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_stolen, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.typeView.text = bikes[position].type
-        holder.colorView.text = bikes[position].color
-        holder.placeView.text = bikes[position].place
-        holder.timeView.text = bikes[position].time
-        holder.imgView.setImageResource(bikes[position].img)
+        holder.bind(bikes[position], bikeClickListener)
     }
 
 }
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder (view) {
-    val typeView = view.stolen_type_text
-    val colorView = view.stolen_color_text
-    val placeView = view.stolen_place_text
-    val timeView = view.stolen_time_text
-    val imgView = view.stolen_image
+class ViewHolder (itemView: View) : RecyclerView.ViewHolder (itemView) {
+    val typeView = itemView.stolen_type_text
+    val colorView = itemView.stolen_color_text
+    val placeView = itemView.stolen_place_text
+    val timeView = itemView.stolen_time_text
+    val imgView = itemView.stolen_image
+    val buttonView = itemView.stolen_button
+
+    fun bind(bike: StolenBikeModel, clickListener: OnBikeClickListener){
+        typeView.text = bike.type
+        colorView.text = bike.color
+        placeView.text = bike.place
+        timeView.text = bike.time
+        imgView.setImageResource(bike.img)
+
+        buttonView.setOnClickListener{
+            clickListener.onBikeClicked(bike)
+        }
+    }
+}
+
+interface OnBikeClickListener {
+    fun onBikeClicked(bike: StolenBikeModel)
 }
