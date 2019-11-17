@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="co.edu.unal.sienbici.ui.dashboard.DashboardFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="co.edu.unal.sienbici.ui.stolen.StolenFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_stolen" />
 
     <fragment
         android:id="@+id/navigation_notifications"
