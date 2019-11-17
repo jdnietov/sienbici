@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="co.edu.unal.sienbici.ui.notifications.NotificationsFragment"
+        android:name="co.edu.unal.sienbici.ui.stolen.StolenFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_stolen" />
 </navigation>
