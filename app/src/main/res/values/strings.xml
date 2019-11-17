@@ -1,25 +1,39 @@
 <resources>
     <string name="app_name">SI en Bici</string>
     <string name="title_activity_maps">SI en Bici</string>
-    <string name="navigation_drawer_open">Abrir drawer</string>
-    <string name="navigation_drawer_close">Cerrar drawer</string>
     <string name="item_your_bikes">Tus bicicletas</string>
     <string name="title_activity_bikes_list">BikesListActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="hello_home_second">Hello HomeSecondFragment. Arg: %1$s</string>
-    <string name="hello_dashboard_second">Hello HomeSecondFragment. Arg: %1$s</string>
-    <string name="hello_notifications_second">Hello HomeSecondFragment. Arg: %1$s</string>
-    <string name="title_home">SI en Bici</string>
+    <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
     <string name="home_second">Home Second</string>
+
+    <string-array name="colors">
+        <item>Rojo</item>
+        <item>Azul</item>
+        <item>Amarillo</item>
+        <item>Verde</item>
+        <item>Naranja</item>
+        <item>Morado</item>
+        <item>Blanco</item>
+        <item>Negro</item>
+    </string-array>
+
+    <string-array name="bike_types">
+        <item>Ruta</item>
+        <item>Fixed</item>
+        <item>Singlespeed</item>
+        <item>BMX</item>
+        <item>MTB</item>
+        <item>Playera</item>
+        <item>Montañera</item>
+        <item>XC</item>
+        <item>Enduro</item>
+    </string-array>
 </resources>
