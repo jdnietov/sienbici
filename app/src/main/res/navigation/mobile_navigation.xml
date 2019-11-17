@@ -31,13 +31,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="co.edu.unal.sienbici.ui.dashboard.DashboardFragment"
+        android:name="co.edu.unal.sienbici.ui.stolen.StolenFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_stolen" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="co.edu.unal.sienbici.ui.stolen.StolenFragment"
+        android:name="co.edu.unal.sienbici.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_stolen" />
+        tools:layout="@layout/fragment_notifications" />
 </navigation>
