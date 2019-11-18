@@ -4,13 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.edu.unal.sienbici.R
 
-class StolenFragment : Fragment() {
+class StolenFragment : Fragment(), OnBikeClickListener {
 
+    override fun onBikeClicked(bike: StolenBikeModel) {
+        val dialog = StolenSightingDialog(bike)
+        activity?.supportFragmentManager?.let { dialog.show(it, "confirmation") }
+        //Toast.makeText(this.activity, "Cicla de tipo: ${bike.type}", Toast.LENGTH_LONG).show()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +29,7 @@ class StolenFragment : Fragment() {
         val mRecyclerView = root.findViewById<RecyclerView>(R.id.stolen_list)
 
         mRecyclerView.layoutManager = LinearLayoutManager(this.activity)
-        mRecyclerView.adapter = this.activity?.let { StolenBikeAdapter(getBikes(), it) }
+        mRecyclerView.adapter = StolenBikeAdapter(getBikes(), this)
         return root
     }
 
