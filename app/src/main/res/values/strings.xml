@@ -36,4 +36,5 @@
         <item>XC</item>
         <item>Enduro</item>
     </string-array>
+    <string name="stolen_button_text">La he visto</string>
 </resources>

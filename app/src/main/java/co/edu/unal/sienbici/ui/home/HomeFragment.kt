@@ -19,6 +19,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.TileOverlayOptions
+import com.google.maps.android.heatmaps.HeatmapTileProvider
+import org.json.JSONArray
+import org.json.JSONException
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     companion object {
@@ -84,10 +90,32 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
             }
         }
+
+        var list: List<LatLng> = readItems(R.raw.robberies)
+        val mProvider = HeatmapTileProvider.Builder()
+            .data(list)
+            .build()
+        val mOverlay = map.addTileOverlay((TileOverlayOptions().tileProvider((mProvider))))
+
     }
 
     private fun placeMarkerOnMap(location: LatLng) {
         val markerOptions = MarkerOptions().position(location).title("Taller de bicicletas")
         map.addMarker(markerOptions)
+    }
+
+    @Throws(JSONException::class)
+    private fun readItems(resource: Int): ArrayList<LatLng> {
+        val list = ArrayList<LatLng>();
+        val inputStream = resources.openRawResource(resource)
+        val json = Scanner(inputStream).useDelimiter("\\A").next()
+        val array = JSONArray(json)
+        for (i in 0 until array.length()){
+            val obj = array.getJSONObject(i)
+            val lat = obj.getDouble("lat")
+            val lng = obj.getDouble("lng")
+            list.add(LatLng(lat,lng))
+        }
+        return list
     }
 }
