@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.edu.unal.sienbici.MyBikesActivity
+import co.edu.unal.sienbici.QRReaderActivity
 import co.edu.unal.sienbici.R
 
 const val EXTRA_USERID = "co.edu.unal.sienbici.EXTRA_USERID"
@@ -32,7 +33,7 @@ class NotificationsFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_notifications, container, false)
 
         listView = root.findViewById(R.id.list_notifications)
-        val listItems = arrayOf("Mis bicicletas", "Mis talleres", "Configuración")
+        val listItems = arrayOf("Mis bicicletas", "Identificar bicicleta", "Mis talleres", "Configuración")
         val adapter = ArrayAdapter(activity as Context, android.R.layout.simple_list_item_1, listItems)
         listView.adapter = adapter
 
@@ -40,6 +41,7 @@ class NotificationsFragment : Fragment() {
         listView.setOnItemClickListener { _, _, position, _ ->
             when(position) {
                 0 -> goToMyBikesActivity()
+                1 -> startActivity(Intent(activity, QRReaderActivity::class.java))
             }
         }
 
