@@ -13,12 +13,12 @@ X diámetro del Rin-->
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBikeActivity">
+    tools:context=".activities.AddBike.AddBikeActivity">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBikeActivity">
+    tools:context=".activities.AddBike.AddBikeActivity">
 
     <EditText
         android:id="@+id/add_bike_edittext_series"

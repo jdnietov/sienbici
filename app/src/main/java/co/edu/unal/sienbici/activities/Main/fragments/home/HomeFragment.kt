@@ -1,4 +1,4 @@
-package co.edu.unal.sienbici.ui.home
+package co.edu.unal.sienbici.activities.Main.fragments.home
 
 import android.content.pm.PackageManager
 import android.location.Location
@@ -40,7 +40,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.main_home_fragment, container, false)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.mMap)
                 as SupportMapFragment

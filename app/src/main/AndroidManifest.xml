@@ -17,9 +17,9 @@
         android:supportsRtl="true"
         android:name="androidx.multidex.MultiDexApplication"
         android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name=".QRReaderActivity" />
-        <activity android:name=".AddBikeActivity" />
-        <activity android:name=".MyBikesActivity" />
+        <activity android:name=".activities.QRReader.QRReaderActivity" />
+        <activity android:name=".activities.AddBike.AddBikeActivity" />
+        <activity android:name=".activities.MyBikes.MyBikesActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,7 +33,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.Main.MainActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

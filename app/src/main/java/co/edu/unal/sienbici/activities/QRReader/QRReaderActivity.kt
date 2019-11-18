@@ -1,10 +1,11 @@
-package co.edu.unal.sienbici
+package co.edu.unal.sienbici.activities.QRReader
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import co.edu.unal.sienbici.R
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 
@@ -12,7 +13,7 @@ class QRReaderActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_qr_reader)
+        setContentView(R.layout.qr_reader_activity)
 
         // turn back button
         val actionbar = supportActionBar

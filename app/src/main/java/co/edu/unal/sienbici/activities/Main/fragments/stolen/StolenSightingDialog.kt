@@ -6,9 +6,10 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import co.edu.unal.sienbici.models.Robbery
 import java.lang.IllegalStateException
 
-class StolenSightingDialog(bike: StolenBikeModel) : DialogFragment() {
+class StolenSightingDialog(bike: Robbery) : DialogFragment() {
     var bike = bike
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let{

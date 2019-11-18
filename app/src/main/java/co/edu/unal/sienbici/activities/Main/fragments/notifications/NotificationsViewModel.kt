@@ -1,4 +1,4 @@
-package co.edu.unal.sienbici.ui.notifications
+package co.edu.unal.sienbici.activities.Main.fragments.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,20 +1,20 @@
 package co.edu.unal.sienbici.ui.stolen
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.edu.unal.sienbici.R
-import kotlinx.android.synthetic.main.card_stolen.view.*
+import co.edu.unal.sienbici.models.Robbery
+import kotlinx.android.synthetic.main.main_stolen_card.view.*
 
-class StolenBikeAdapter (val bikes: ArrayList<StolenBikeModel>, val bikeClickListener: OnBikeClickListener) : RecyclerView.Adapter<ViewHolder> (){
+class StolenBikeAdapter (val bikes: ArrayList<Robbery>, val bikeClickListener: OnBikeClickListener) : RecyclerView.Adapter<ViewHolder> (){
     override fun getItemCount(): Int {
         return bikes.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_stolen, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.main_stolen_card, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,7 +31,7 @@ class ViewHolder (itemView: View) : RecyclerView.ViewHolder (itemView) {
     val imgView = itemView.stolen_image
     val buttonView = itemView.stolen_button
 
-    fun bind(bike: StolenBikeModel, clickListener: OnBikeClickListener){
+    fun bind(bike: Robbery, clickListener: OnBikeClickListener){
         typeView.text = bike.type
         colorView.text = bike.color
         placeView.text = bike.place
@@ -45,5 +45,5 @@ class ViewHolder (itemView: View) : RecyclerView.ViewHolder (itemView) {
 }
 
 interface OnBikeClickListener {
-    fun onBikeClicked(bike: StolenBikeModel)
+    fun onBikeClicked(bike: Robbery)
 }

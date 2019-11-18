@@ -1,4 +1,4 @@
-package co.edu.unal.sienbici.ui.notifications
+package co.edu.unal.sienbici.activities.Main.fragments.notifications
 
 import android.content.Context
 import android.content.Intent
@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import co.edu.unal.sienbici.MyBikesActivity
-import co.edu.unal.sienbici.QRReaderActivity
+import co.edu.unal.sienbici.activities.MyBikes.MyBikesActivity
+import co.edu.unal.sienbici.activities.QRReader.QRReaderActivity
 import co.edu.unal.sienbici.R
 
 const val EXTRA_USERID = "co.edu.unal.sienbici.EXTRA_USERID"
@@ -30,7 +28,7 @@ class NotificationsFragment : Fragment() {
     ): View? {
         notificationsViewModel =
             ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+        val root = inflater.inflate(R.layout.main_notifications_fragment, container, false)
 
         listView = root.findViewById(R.id.list_notifications)
         val listItems = arrayOf("Mis bicicletas", "Identificar bicicleta", "Mis talleres", "Configuración")

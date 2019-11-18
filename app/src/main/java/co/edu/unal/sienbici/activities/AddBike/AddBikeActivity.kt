@@ -1,4 +1,4 @@
-package co.edu.unal.sienbici
+package co.edu.unal.sienbici.activities.AddBike
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,12 +6,13 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import co.edu.unal.sienbici.R
 
 class AddBikeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_bike)
+        setContentView(R.layout.add_bike_activity)
 
         val colorSpinner: Spinner = findViewById(R.id.add_bike_spinner_color)
         ArrayAdapter.createFromResource(
