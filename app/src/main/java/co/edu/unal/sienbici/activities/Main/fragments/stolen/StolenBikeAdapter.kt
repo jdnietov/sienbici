@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.edu.unal.sienbici.R
 import co.edu.unal.sienbici.models.Robbery
 import kotlinx.android.synthetic.main.main_stolen_card.view.*
+import java.time.format.DateTimeFormatter
 
 class StolenBikeAdapter (val bikes: ArrayList<Robbery>, val bikeClickListener: OnBikeClickListener) : RecyclerView.Adapter<ViewHolder> (){
     override fun getItemCount(): Int {
@@ -24,26 +25,28 @@ class StolenBikeAdapter (val bikes: ArrayList<Robbery>, val bikeClickListener: O
 }
 
 class ViewHolder (itemView: View) : RecyclerView.ViewHolder (itemView) {
-    val typeView = itemView.stolen_type_text
+    val brandView = itemView.stolen_card_textview_brand
     val colorView = itemView.stolen_color_text
     val placeView = itemView.stolen_place_text
     val timeView = itemView.stolen_time_text
     val imgView = itemView.stolen_image
     val buttonView = itemView.stolen_button
 
-    fun bind(bike: Robbery, clickListener: OnBikeClickListener){
-        typeView.text = bike.type
-        colorView.text = bike.color
-        placeView.text = bike.place
-        timeView.text = bike.time
-        imgView.setImageResource(bike.img)
+    fun bind(robbery: Robbery, clickListener: OnBikeClickListener){
+        brandView.text = "Marca: ${robbery.brand} ${robbery.ref}"
+        colorView.text = robbery.color
+        placeView.text = robbery.place
+
+        val formatter = DateTimeFormatter.ofPattern("d-M-y HH:mm:ss")
+        timeView.text = robbery.date.format(formatter)
+        imgView.setImageResource(robbery.img)
 
         buttonView.setOnClickListener{
-            clickListener.onBikeClicked(bike)
+            clickListener.onBikeClicked(robbery)
         }
     }
 }
 
 interface OnBikeClickListener {
-    fun onBikeClicked(bike: Robbery)
+    fun onBikeClicked(robbery: Robbery)
 }

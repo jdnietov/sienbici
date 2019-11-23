@@ -9,13 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.edu.unal.sienbici.R
 import co.edu.unal.sienbici.models.Robbery
+import kotlin.collections.ArrayList
 
 class StolenFragment : Fragment(), OnBikeClickListener {
-
-    override fun onBikeClicked(bike: Robbery) {
-        val dialog = StolenSightingDialog(bike)
+    override fun onBikeClicked(robbery: Robbery) {
+        val dialog = StolenSightingDialog(robbery)
         activity?.supportFragmentManager?.let { dialog.show(it, "confirmation") }
-        //Toast.makeText(this.activity, "Cicla de tipo: ${bike.type}", Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateView(
@@ -33,20 +32,12 @@ class StolenFragment : Fragment(), OnBikeClickListener {
     }
 
     private fun getBikes(): ArrayList<Robbery> {
-        val bikes = ArrayList<Robbery>()
+        val robberies = ArrayList<Robbery>()
 
-        var bike = Robbery("BMX", "Negro", "Bosa", "11-12-2019", R.drawable.bike1 )
-        bikes.add(bike)
-        bike = Robbery("Todo-Terreno", "Blanco", "La Candelaria", "13-12-2019", R.drawable.bike2 )
-        bikes.add(bike)
-        bike = Robbery("Urbana", "Azul", "Bosa", "5-12-2019", R.drawable.bike3 )
-        bikes.add(bike)
-        bike = Robbery("Hibrida", "Rojo", "Suba", "11-12-2019", R.drawable.bike4 )
-        bikes.add(bike)
-        bike = Robbery("Plegable", "Negro", "Los Martires", "01-12-2019", R.drawable.bike1 )
-        bikes.add(bike)
-        bike = Robbery("BMX", "Negro", "Bosa", "11-12-2019", R.drawable.bike4 )
-        bikes.add(bike)
-        return bikes
+        var robbery = Robbery("1", "Trek", "123", "Rojo", "Usaquén", R.drawable.bike1)
+        robberies.add(robbery)
+        robbery = Robbery("2", "Specialized", "789", "Negra", "La Candelaria", R.drawable.bike2)
+        robberies.add(robbery)
+        return robberies
     }
 }

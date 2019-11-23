@@ -2,18 +2,20 @@ package co.edu.unal.sienbici.activities.BikeInfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import co.edu.unal.sienbici.R
 import co.edu.unal.sienbici.models.Bike
 import com.google.firebase.database.*
 
 class BikeInfoActivity : AppCompatActivity() {
-
     // Intent extras
     private lateinit var bikeId : String
+    private var bike : Bike? = null
 
     // UI components
+    private lateinit var btn : Button
     private lateinit var editTextBrand : TextView
     private lateinit var editTextColor : TextView
     private lateinit var editTextSerial : TextView
@@ -32,10 +34,12 @@ class BikeInfoActivity : AppCompatActivity() {
             .child("bikes").child(bikeId)
 
         // fetch UI components
-        editTextBrand = findViewById(R.id.bike_info_edittext_brand)
-        editTextColor = findViewById(R.id.bike_info_edittext_color)
-        editTextSerial = findViewById(R.id.bike_info_edittext_serial)
-        editTextDiameter = findViewById(R.id.bike_info_edittext_diameter)
+        btn = findViewById(R.id.bike_info_button_report)
+        editTextBrand = findViewById(R.id.bike_info_textview_brand)
+        editTextColor = findViewById(R.id.bike_info_textview_color)
+        editTextSerial = findViewById(R.id.bike_info_textview_serial)
+        editTextDiameter = findViewById(R.id.bike_info_textview_diameter)
+        btn.setOnClickListener { _ -> reportBike() }
 
         // setup actionbar
         val actionbar = supportActionBar
@@ -52,7 +56,8 @@ class BikeInfoActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val bike = dataSnapshot.getValue(Bike::class.java)
+                bike = dataSnapshot.getValue(Bike::class.java)
+
                 supportActionBar!!.title = "${bike?.brand} ${bike?.ref}"
                 supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
@@ -61,7 +66,6 @@ class BikeInfoActivity : AppCompatActivity() {
                 editTextSerial.text = "Número de serie: ${bike?.serial}"
                 editTextDiameter.text = "Diámetro del rin: ${bike?.diameter}"
             }
-
         }
 
         bikeReference.addValueEventListener(valueEventListener)
@@ -72,5 +76,9 @@ class BikeInfoActivity : AppCompatActivity() {
         super.onStop()
 
         bikeListener?.let { bikeReference.removeEventListener(bikeListener!!) }
+    }
+
+    private fun reportBike() {
+        Toast.makeText(this, "Cicla de tipo: ${bike?.type}", Toast.LENGTH_LONG).show()
     }
 }

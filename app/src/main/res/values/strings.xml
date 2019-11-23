@@ -15,14 +15,14 @@
     <string name="home_second">Home Second</string>
 
     <string-array name="colors">
-        <item>Rojo</item>
+        <item>Roja</item>
         <item>Azul</item>
-        <item>Amarillo</item>
+        <item>Amarilla</item>
         <item>Verde</item>
         <item>Naranja</item>
-        <item>Morado</item>
-        <item>Blanco</item>
-        <item>Negro</item>
+        <item>Morada</item>
+        <item>Blanca</item>
+        <item>Negra</item>
     </string-array>
 
     <string-array name="bike_types">
