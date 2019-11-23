@@ -32,7 +32,7 @@ class StolenFragment : Fragment(), OnBikeClickListener {
         return root
     }
 
-    fun getBikes(): ArrayList<Robbery> {
+    private fun getBikes(): ArrayList<Robbery> {
         val bikes = ArrayList<Robbery>()
 
         var bike = Robbery("BMX", "Negro", "Bosa", "11-12-2019", R.drawable.bike1 )
