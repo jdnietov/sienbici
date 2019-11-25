@@ -12,9 +12,9 @@
         tools:layout="@layout/main_home_fragment" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_stolen"
         android:name="co.edu.unal.sienbici.ui.stolen.StolenFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_stolen"
         tools:layout="@layout/main_stolen_fragment" />
 
     <fragment
