@@ -55,7 +55,7 @@ class AddBikeActivity : AppCompatActivity() {
         btn = findViewById(R.id.add_bike_button)
         editTextBrand = findViewById(R.id.add_bike_edittext_brand)
         editTextDiameter = findViewById(R.id.add_bike_edittext_diameter)
-        editTextReference = findViewById(R.id.add_bike_edittext_brand)
+        editTextReference = findViewById(R.id.add_bike_edittext_reference)
         editTextSerial = findViewById(R.id.add_bike_edittext_serial)
 
         spinnerColor = findViewById((R.id.add_bike_spinner_color))

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.edu.unal.sienbici.R
+import co.edu.unal.sienbici.activities.Main.fragments.stolen.StolenSightingDialog
 import co.edu.unal.sienbici.models.Robbery
 import kotlin.collections.ArrayList
 

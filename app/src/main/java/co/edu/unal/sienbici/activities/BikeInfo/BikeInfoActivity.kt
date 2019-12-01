@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import co.edu.unal.sienbici.R
 import co.edu.unal.sienbici.models.Bike
+import co.edu.unal.sienbici.models.Robbery
 import com.google.firebase.database.*
 
 class BikeInfoActivity : AppCompatActivity() {
@@ -23,6 +24,7 @@ class BikeInfoActivity : AppCompatActivity() {
 
     // Firebase variables
     private lateinit var bikeReference : DatabaseReference
+    private lateinit var robberyReference : DatabaseReference
     private var bikeListener : ValueEventListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,8 @@ class BikeInfoActivity : AppCompatActivity() {
         bikeId = intent.getStringExtra("EXTRA_BIKEID")
         bikeReference = FirebaseDatabase.getInstance().reference
             .child("bikes").child(bikeId)
+        robberyReference = FirebaseDatabase.getInstance().reference
+            .child("robberies")
 
         // fetch UI components
         btn = findViewById(R.id.bike_info_button_report)
@@ -79,6 +83,19 @@ class BikeInfoActivity : AppCompatActivity() {
     }
 
     private fun reportBike() {
+        val key = robberyReference.push().key
+        key?.let {
+            robberyReference.child(it).setValue(
+                Robbery(
+                    bikeId,
+                    bike!!.brand,
+                    bike!!.ref,
+                    bike!!.color,
+                    "Localidad",
+                    R.drawable.bike1
+                )
+            )
+        }
         Toast.makeText(this, "Cicla de tipo: ${bike?.type}", Toast.LENGTH_LONG).show()
     }
 }

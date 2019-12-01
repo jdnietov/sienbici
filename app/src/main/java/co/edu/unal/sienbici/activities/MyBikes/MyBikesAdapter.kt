@@ -32,14 +32,12 @@ class MyBikesAdapter(private val context: Context,
 
         val brandTextView = rowView.findViewById(R.id.bike_listitem_brand) as TextView
         val refTextView = rowView.findViewById(R.id.bike_listitem_ref) as TextView
-        val colorTextView = rowView.findViewById(R.id.bike_listitem_color) as TextView
         val serialTextView = rowView.findViewById(R.id.bike_listitem_serial) as TextView
 
         val bike = getItem(position) as Bike
 
         brandTextView.text = bike.brand
         refTextView.text = bike.ref
-        colorTextView.text = bike.color
         serialTextView.text = bike.serial
 
         return rowView

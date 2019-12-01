@@ -57,13 +57,6 @@
                     android:text="referencia"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/bike_listitem_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="color"
-                    android:textSize="18sp" />
-
             </LinearLayout>
 
             <LinearLayout
