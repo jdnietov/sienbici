@@ -86,26 +86,37 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-                placeMarkerOnMap(currentLatLng)
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 17f))
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
             }
         }
 
-        var list: List<LatLng> = readItems(R.raw.robberies)
+        var list: List<LatLng> = readDangerZones(R.raw.robberies)
         val mProvider = HeatmapTileProvider.Builder()
             .data(list)
             .build()
-        val mOverlay = map.addTileOverlay((TileOverlayOptions().tileProvider((mProvider))))
+        map.addTileOverlay((TileOverlayOptions().tileProvider((mProvider))))
+
+        placeStores(R.raw.stores)
 
     }
-
-    private fun placeMarkerOnMap(location: LatLng) {
-        val markerOptions = MarkerOptions().position(location).title("Taller de bicicletas")
-        map.addMarker(markerOptions)
+    private fun placeStores(resource: Int) {
+        val inputStream = resources.openRawResource(resource)
+        val json = Scanner(inputStream).useDelimiter("\\A").next()
+        val array = JSONArray(json)
+        for (i in 0 until array.length()){
+            val obj = array.getJSONObject(i)
+            val lat = obj.getDouble("lat")
+            val lng = obj.getDouble("lng")
+            val name = obj.getString("name")
+            val markerOptions = MarkerOptions()
+                .position(LatLng(lat,lng))
+                .title(name)
+            map.addMarker(markerOptions)
+        }
     }
 
     @Throws(JSONException::class)
-    private fun readItems(resource: Int): ArrayList<LatLng> {
+    private fun readDangerZones(resource: Int): ArrayList<LatLng> {
         val list = ArrayList<LatLng>();
         val inputStream = resources.openRawResource(resource)
         val json = Scanner(inputStream).useDelimiter("\\A").next()
