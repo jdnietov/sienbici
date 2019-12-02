@@ -1,18 +1,23 @@
 package co.edu.unal.sienbici.activities.QRReader
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import co.edu.unal.sienbici.R
+import co.edu.unal.sienbici.activities.ReaderResult.ReaderResultActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 
 class QRReaderActivity : AppCompatActivity() {
-    private var changeFragment = false
-    private var scanResult = ""
+    // UI components
+    private lateinit var greeting: TextView
+    private lateinit var message: TextView
+    private lateinit var scanButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,30 +27,17 @@ class QRReaderActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.title = "Escanear código"
         actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setDisplayShowHomeEnabled(true)
 
-        findViewById<FrameLayout>(R.id.qr_reader_fragment)?.let {
-            if (savedInstanceState != null) {
-                return;
-            }
-        }
+        // initialize UI components
+        greeting = findViewById(R.id.qr_reader_textview_greeting)
+        message = findViewById(R.id.qr_reader_textview_message)
+        scanButton = findViewById(R.id.qr_button_scan)
 
-        val btnScan : Button = findViewById(R.id.qr_button_scan)
-        btnScan.setOnClickListener {
+        scanButton.setOnClickListener {
             run {
                 IntentIntegrator(this@QRReaderActivity).initiateScan();
             }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        if(changeFragment) {
-            changeFragment = false
-
-            val fragment = BikePropertyFragment(scanResult)
-            supportFragmentManager.beginTransaction().replace(R.id.qr_reader_fragment, fragment)
-                .commit()
         }
     }
 
@@ -56,16 +48,22 @@ class QRReaderActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         var result: IntentResult? = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        val txtValue : TextView = findViewById(R.id.qr_text_value)
 
         if(result != null){
             if(result.contents != null){
-                txtValue.text = result.contents
-                scanResult = result.contents
-                changeFragment = true
-            } else {
-                txtValue.text = "scan failed"
-            }
+                if(result.contents.substring(0, 8) == "sienbici") {
+                    val intent = Intent(this, ReaderResultActivity::class.java)
+                    Log.e("QRReaderActivity", result.contents.substring(8))
+                    intent.putExtra("EXTRA_QR_BIKEID", result.contents.substring(8))
+                    startActivity(intent)
+                } else {
+                    greeting.text = "¡Lo sentimos!"
+                    message.text = "El identificador que leíste no fue válido. Por favor, intenta de nuevo."
+                    greeting.setTypeface(null, Typeface.BOLD)
+                    greeting.setTextColor(ContextCompat.getColor(this, R.color.redError))
+                    message.setTextColor(ContextCompat.getColor(this, R.color.redError))
+                }
+            } // TODO: handle error
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }

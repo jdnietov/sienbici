@@ -6,5 +6,6 @@ data class Bike(
     val brand: String = "",
     val ref: String = "",
     val serial: String = "",
-    val diameter: Int = -1
+    val diameter: Int = -1,
+    val reported: Boolean = false
 )

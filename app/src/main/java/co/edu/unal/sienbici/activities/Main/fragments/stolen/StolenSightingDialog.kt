@@ -17,10 +17,10 @@ class StolenSightingDialog(private val robbery: Robbery) : DialogFragment() {
             val builder = AlertDialog.Builder(it)
 
             builder.setMessage("¿Desea reportar que vio esta bicicleta cerca a donde se encuentra actualmente?")
-                .setPositiveButton("SI", DialogInterface.OnClickListener { dialog, id ->
+                .setPositiveButton("SI", DialogInterface.OnClickListener { _, _ ->
                     Toast.makeText(this.activity, "Bicicleta Reportada", Toast.LENGTH_LONG).show()
                 })
-                .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, id ->
+                .setNegativeButton("NO", DialogInterface.OnClickListener { _, _ ->
                 })
             builder.create()
         } ?: throw  IllegalStateException("Activity cannot be null")

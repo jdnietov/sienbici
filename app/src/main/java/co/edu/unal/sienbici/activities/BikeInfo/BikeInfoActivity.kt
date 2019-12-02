@@ -29,7 +29,7 @@ class BikeInfoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bike_info)
+        setContentView(R.layout.bike_info_activity)
 
         bikeId = intent.getStringExtra("EXTRA_BIKEID")
         bikeReference = FirebaseDatabase.getInstance().reference
@@ -62,13 +62,15 @@ class BikeInfoActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 bike = dataSnapshot.getValue(Bike::class.java)
 
-                supportActionBar!!.title = "${bike?.brand} ${bike?.ref}"
-                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                bike?.let { bike ->
+                    supportActionBar!!.title = "${bike.brand} ${bike.ref}"
+                    supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-                editTextBrand.text = "Marca: ${bike?.brand} ${bike?.ref}"
-                editTextColor.text = "Color: ${bike?.color}"
-                editTextSerial.text = "Número de serie: ${bike?.serial}"
-                editTextDiameter.text = "Diámetro del rin: ${bike?.diameter}"
+                    editTextBrand.text = "Marca: ${bike.brand} ${bike.ref}"
+                    editTextColor.text = "Color: ${bike.color}"
+                    editTextSerial.text = "Número de serie: ${bike.serial}"
+                    editTextDiameter.text = "Diámetro del rin: ${bike.diameter}"
+                }
             }
         }
 

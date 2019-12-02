@@ -45,7 +45,7 @@ class MyBikesActivity : AppCompatActivity() {
         listView = findViewById(R.id.my_bikes_listview)
 
         // add on item click listener
-        listView.setOnItemClickListener{ parent, view, position, id ->
+        listView.setOnItemClickListener{ _, _, position, _ ->
             val intent = Intent(this, BikeInfoActivity::class.java)
             intent.putExtra("EXTRA_BIKEID", idList[position])
             Log.e("Position", bikeList[position].toString())
