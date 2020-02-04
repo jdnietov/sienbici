@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "435486015042-jt01783b90hn6pvh674blsg99ho7u1v1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.unal.sienbici",
+            "certificate_hash": "05f6e1c0d33c916fba25130841417969334c34b6"
+          }
+        },
+        {
           "client_id": "435486015042-ut4nqgaeg330m47qhukvir80p24unikm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
